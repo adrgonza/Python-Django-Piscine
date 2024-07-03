@@ -24,6 +24,5 @@ if __name__ == "__main__":
     my_dict = {}
     for d_o in d:
        my_dict[int(d_o[1])] = d_o[0]
-    for i in my_dict:
-        print(i)
-        print('\n')
+    for key in my_dict:
+        print(f"{key}: {my_dict[key]}")
