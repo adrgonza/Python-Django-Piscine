@@ -1,20 +1,7 @@
 import sys
 
-n = len(sys.argv)
-states = {
-    "Oregon" : "OR",
-    "Alabama" : "AL",
-    "New Jersey": "NJ",
-    "Colorado" : "CO"
-}
-capital_cities = {
-    "OR": "Salem",
-    "AL": "Montgomery",
-    "NJ": "Trenton",
-    "CO": "Denver"
-}
-
 def search_dict():
+    n = len(sys.argv)
     if n != 2:
         return 0
     try:
@@ -24,4 +11,16 @@ def search_dict():
         print("Unknown state")
 
 if __name__ == "__main__":
-    search_dict()
+    states = {
+        "Oregon" : "OR",
+        "Alabama" : "AL",
+        "New Jersey": "NJ",
+        "Colorado" : "CO"
+    }
+    capital_cities = {
+        "OR": "Salem",
+        "AL": "Montgomery",
+        "NJ": "Trenton",
+        "CO": "Denver"
+    }
+    search_dict(states, capital_cities)
