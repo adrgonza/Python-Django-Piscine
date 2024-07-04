@@ -17,10 +17,10 @@ capital_cities = {
 def search_dict():
     if n != 2:
         return 0
-    key = states[sys.argv[0]]
-    if key:
+    try:
+        key = states[sys.argv[1]]
         print(capital_cities[key])
-    else:
+    except:
         print("Unknown state")
 
 if __name__ == "__main__":
