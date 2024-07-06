@@ -1,0 +1,19 @@
+<h1>
+    {name}
+</h1>
+<hr>
+<p>
+    {city} • {mail} • {phone} • {github}
+</p>
+<h2>
+    About me
+</h2>
+<p>
+    {aboutme}
+</p>
+<h2>
+    Education
+</h2>
+<p>
+    {education}
+</p>
