@@ -16,7 +16,6 @@ class Text(str):
             text = text.replace('"', '&quot;')
         return text.replace('\n', '\n<br />\n')
 
-
 class Elem:
     """
     Elem will permit us to represent our HTML elements.
@@ -96,6 +95,3 @@ class Elem:
                                                 isinstance(elem, Elem)
                                                 for elem in content])))
 
-
-if __name__ == '__main__':
-    print(Elem("html",content=[Elem("head",content=Elem("title",content=Text('"Hello ground!"'))),Elem("body",content=[Elem("h1",content=Text('"Oh no, not again!"')),Elem("img", tag_type="simple", attr={'src': 'http://i.imgur.com/pfp3T.jpg'})])]))
