@@ -25,6 +25,7 @@ def test_text():
     
 def test_elem_basics():
     # Default behaviour :
+    print(Elem())
     assert str(Elem()) == '<div></div>'
     # Arguments order :
     assert str(Elem('div', {}, None, 'double')) == '<div></div>'

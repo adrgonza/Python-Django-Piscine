@@ -12,14 +12,16 @@ class Text(str):
         """
         Do you really need a comment to understand this method?..
         """
-        return super().__str__().replace('\n', '\n<br />\n')
+        return super().__str__().replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;').replace('\n', '\n<br />\n')
 
 
 class Elem:
     """
     Elem will permit us to represent our HTML elements.
     """
-    [...]
+    class ValidationError(Exception):
+        def __init__(self):
+            super().__init__("Invalid Content")
 
     def __init__(self, tag='div', attr={}, content=None, tag_type='double'):
         """
@@ -28,11 +30,16 @@ class Elem:
         Obviously.
         """
         self.tag = tag
-        self.attr = attr if attr else {}
+        self.attr = attr
         self.tag_type = tag_type
         self.content = []
+
         if content:
-            self.content = self.add_content(content)
+            self.add_content(content)
+        elif content is not None and not isinstance(content, Text):
+            raise self.ValidationError
+        self.tag_type = tag_type
+
 
     def __str__(self):
         """
@@ -42,10 +49,10 @@ class Elem:
         elements...).
         """
         if self.tag_type == 'double':
-            result = f"<{self.tag}{self.__make_attr()}>{self.__make_content()}</{self.tag}>"
+            return f"<{self.tag}{self.__make_attr()}>{self.__make_content()}</{self.tag}>"
         elif self.tag_type == 'simple':
-            result = f"<{self.tag}{self.__make_attr()} />"
-        return result
+            return f"<{self.tag}{self.__make_attr()} />"
+        return ""
 
     def __make_attr(self):
         """
@@ -65,7 +72,7 @@ class Elem:
             return ''
         result = '\n'
         for elem in self.content:
-            result += elem
+            result += "  " + str(elem).replace("\n", "\n  ") + "\n"
         return result
 
     def add_content(self, content):
@@ -89,4 +96,4 @@ class Elem:
 
 
 if __name__ == '__main__':
-    [...]
+    print(Elem("html",content=[Elem("head",content=Elem("title",content=Text('"Hello ground!"'))),Elem("body",content=[Elem("h1",content=Text('"Oh no, not again!"')),Elem("img", tag_type="simple", attr={'src': 'http://i.imgur.com/pfp3T.jpg'})])]))
