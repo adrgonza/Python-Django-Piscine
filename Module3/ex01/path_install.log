@@ -1,0 +1,12 @@
+Defaulting to user installation because normal site-packages is not writeable
+Processing ./local_lib
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Installing backend dependencies: started
+  Installing backend dependencies: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+INFO: pip is looking at multiple versions of path to determine which version is compatible with other requirements. This could take a while.
+ERROR: Package 'path' requires a different Python: 3.7.9 not in '>=3.8'
