@@ -16,12 +16,12 @@ def main():
     you = Intern()
     mark = Intern("Mark")
 
-    print(nobody)
+    print(you)
     print(mark)
 
     print(mark.make_coffee())
     try:
-        nobody.work()
+        you.work()
     except Exception as error:
         print(error)
 

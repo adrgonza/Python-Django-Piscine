@@ -1,6 +1,6 @@
 import sys
 
-def search_dict():
+def search_dict(states, capital_cities):
     n = len(sys.argv)
     if n != 2:
         return 0

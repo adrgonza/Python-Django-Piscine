@@ -81,12 +81,9 @@ def write_head(file):
     file.write(content)
 
 def fill_html(elements_dict):
-    file = open("./periodic_table.html", "w")
-
-    write_head(file)
-    write_body(file, elements_dict)
-
-    file.close()
+    with open("periodic_table.html", "w") as file:
+        write_head(file)
+        write_body(file, elements_dict)
 
 def transform_str_to_dict(x, elements_dict):
     parts = x.split(", ")
@@ -96,7 +93,7 @@ def transform_str_to_dict(x, elements_dict):
     small = parts[2].split(": ")[1]
     molar = parts[3].split(":")[1]
     electron = parts[4].split(":")[1]
-    key = int(number)
+    key = int(number)l
     elements_dict[key] = {
         "name": name,
         "position": position,
@@ -106,16 +103,17 @@ def transform_str_to_dict(x, elements_dict):
     } 
 
 def fill_dict(elements_dict):
-    f = open("periodic_table.txt", "r")
-    elements = f.read().split("\n")
-    for x in elements:
-        if x:
-            transform_str_to_dict(x, elements_dict)
-    elements_dict = dict(sorted(elements_dict.items()))
-    print(elements_dict)
+    try:
+        with open("periodic_table.txt", "r") as f:
+            elements = f.read().split("\n")
+            for x in elements:
+                if x:
+                    transform_str_to_dict(x, elements_dict)
+            elements_dict = dict(sorted(elements_dict.items()))
+            fill_html(elements_dict)
+    except FileNotFoundError:
+        print("File not found")
 
 if __name__ == '__main__':
     elements_dict = {}
-
     fill_dict(elements_dict)
-    fill_html(elements_dict)

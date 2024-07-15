@@ -29,7 +29,7 @@ def manage_dictionaries(states, capital_cities):
                 state_value = search_key_with_value(states, key_capital)
                 capital_value = arg
             else:
-                print(arg + " is neither a capital city or a state")
+                print(arg + " is neither a capital city nor a state")
                 continue
         print(capital_value + "  is the capital of " + state_value)
 

@@ -1,5 +1,8 @@
 if __name__ == '__main__':
-    f = open("numbers.txt", "r")
-    numbers = f.read().split(",")
-    for nb in numbers:
-        print(nb + '\n')
+    try:
+        with open("numbers.txt", "r") as f:
+            numbers = f.read().split(",")
+            for nb in numbers:
+                print(nb)
+    except FileNotFoundError:
+        print("Wrong file or file path")

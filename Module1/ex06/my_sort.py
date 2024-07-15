@@ -22,4 +22,5 @@ if __name__ == '__main__':
         'Burton' : '1939',
     }
     sorted_dict = dict(sorted(d.items(), key=lambda item: item[1]))
-    print(sorted_dict)
+    for x in sorted_dict:
+        print(x)

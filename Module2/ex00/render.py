@@ -17,9 +17,12 @@ def main():
                 value = getattr(settings, attr)
                 body = body.replace(placeholder, str(value))
                 content = settings.html_content.format(content=body)
+        try:
+            with open(sys.argv[1].replace(".template", ".html"), "w") as html_file:
+                html_file.write(content)
+        except Exception as e:
+            print(f"An error occurred: {e}")
 
-        with open(sys.argv[1].replace(".template", ".html"), "w") as html_file:
-            html_file.write(content)
         
 
 if __name__ == '__main__':

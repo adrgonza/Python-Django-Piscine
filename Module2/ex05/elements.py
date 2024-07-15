@@ -149,6 +149,9 @@ if __name__ == "__main__":
             ])
         ])
     ])
-    with open("mycv.html", "w") as file:
-        file.write(str(html_content))
-    print(html_content)
+    try:
+        with open("mycv.html", "w") as file:
+            file.write(str(html_content))
+        print(html_content)
+    except Exception as e:
+        print(f"An error occurred: {e}")
