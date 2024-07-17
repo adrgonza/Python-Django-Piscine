@@ -4,6 +4,8 @@ python3 -m venv venv
 
 source venv/bin/activate
 
-pip3 install django django-admin
+pip install django 
 
-pip3 install -r requirements.txt
+pip freeze > requirements.txt
+
+django-admin startproject d05 .
