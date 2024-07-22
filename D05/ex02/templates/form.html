@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Input History</title>
+</head>
+<body>
+    <h1>Input History</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+    <h2>History</h2>
+    <ul>
+        {% for timestamp, user_input in history %}
+            <li>{{ timestamp }}: {{ user_input }}</li>
+        {% empty %}
+            <li>No history yet.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

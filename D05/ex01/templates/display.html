@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}
+<title>Ex01: Display process of a static page.</title>
+{% endblock title %}
+
+{% block content %}
+    <h1>Display process of a static page</h1>
+    <p>
+        When a user requests a static web page in Django, the process begins with the user’s web browser sending an HTTP request to the server. The Django application’s URL dispatcher then matches this request to a specific view based on the URL patterns defined in the <code>urls.py</code> file. The view, a Python function or class-based view, handles the request. For serving a static page from a template, the view typically calls the <code>render</code> function, passing in the request object, the path to the template file, and any context data to be rendered. The Django template engine processes the template, merging it with the context data, and generates the final HTML. This HTML is then wrapped in an HTTP response object and sent back to the user's browser, which renders the static web page for the user to see. Throughout this process, Django's middleware may perform additional processing, such as handling sessions, security checks, and content compression, ensuring a smooth and secure delivery of the static content.
+    </p>
+{% endblock content%}

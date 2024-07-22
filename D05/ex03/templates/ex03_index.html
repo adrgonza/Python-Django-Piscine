@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fifty Shades of Bic</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            height: 40px;
+            width: 80px;
+            border: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fifty Shades of Bic</h1>
+    <table>
+        <tr>
+            <th>Noir</th>
+            <th>Rouge</th>
+            <th>Bleu</th>
+            <th>Vert</th>
+        </tr>
+        {% for i in range %}
+        <tr>
+            <td style="background-color: {{ shades.noir.i }}"></td>
+            <td style="background-color: {{ shades.rouge.i }}"></td>
+            <td style="background-color: {{ shades.bleu.i }}"></td>
+            <td style="background-color: {{ shades.vert.i }}"></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
+
