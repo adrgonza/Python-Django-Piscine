@@ -9,6 +9,7 @@ def main():
         latitude = float(sys.argv[2])
         longitude = float(sys.argv[3])
     except ValueError:
+        print("Error with parameters")
         return
 
     try:

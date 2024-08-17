@@ -1,16 +1,12 @@
-pip3 --version
+#!/bin/bash
 
-rm -rf local_lib
+GITURL="https://github.com/jaraco/path.git"
 
-mkdir local_lib
+/usr/bin/python3 -m venv venv
+source venv/bin/activate
 
-git clone https://github.com/jaraco/path local_lib > "path_install.log"
+python -m pip --version
 
-pip3 install ./local_lib/. >> "path_install.log" 2>&1
+python -m pip install --log pip_install.log --force-reinstall git+$GITURL
 
-if [ $? -eq 0 ]; then
-    echo "Installation successful. Running the Python program..."
-    python3 my_program.py
-else
-    echo "Installation failed. Check the log file for details."
-fi
+python3 my_program.py
