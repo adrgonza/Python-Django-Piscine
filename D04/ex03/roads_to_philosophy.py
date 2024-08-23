@@ -1,7 +1,6 @@
 import sys
 import requests
 from bs4 import BeautifulSoup
-import re
 
 def main():
     if len(sys.argv) != 2:
@@ -29,6 +28,8 @@ def main():
         all_links = text.select('p > a')
 
         if not all_links:
+            if len(titles) == 1:
+                return print("The page does not exist!")
             return print("It leads to a dead end!")
         for link in all_links:
             link_text = link.find_parent('p').text
