@@ -3,47 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ex00: Markdown Cheatsheet.</title>
+    <title>Markdown Cheatsheet</title>
     <style>
-        h1 {
+        .page {
             text-align: center;
-            font-size: 50px;
+        }
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
         }
     </style>
 </head>
 <body>
-    <h1>Markdown syntax</h1>
-    <p>Markdown is an easy-to-use markup language that is
-         used with plain text to add formatting elements (headings, bulleted lists, URLs) to plain text
-         without the use of a formal text editor or the use of HTML tags. Markdown is device agnostic and displays the writing
-          format consistently across device types.
-    </p>
-    <h1 id="sample-markdown">Sample Markdown</h1>
-<p>This is some basic, sample markdown.</p>
-<h2 id="second-heading">Second Heading</h2>
-<ul>
-<li>Unordered lists, and:<ol>
-<li>One</li>
-<li>Two</li>
-<li>Three</li>
-</ol>
-</li>
-<li>More</li>
-</ul>
-<blockquote>
-<p>Blockquote</p>
-</blockquote>
-<p>And <strong>bold</strong>, <em>italics</em>, and even <em>italics and later <strong>bold</strong></em>. Even <del>strikethrough</del>. <a href="https://markdowntohtml.com">A link</a> to somewhere.</p>
-<p>And code highlighting:</p>
-<pre><code class="lang-js"><span class="hljs-keyword">var</span> foo = <span class="hljs-string">'bar'</span>;
+    <div class="page">
+        <h1>Markdown</h1>
+        <h2>Overview</h2>
+        <p>This Markdown cheat sheet provides a quick overview of all the Markdown syntax elements. It can’t cover every edge case, so if you need more information about any of these elements, refer to the reference guides for basic syntax and extended syntax.</p>
+        <h2>Basic Syntax</h2>
+        <p>These are the elements outlined in John Gruber’s original design document. All Markdown applications support these elements.</p>
+        
+        <center><table>
+            <tr>
+                <th>Element</th>
+                <th>Markdown Syntax</th>
+            </tr>
+            <tr>
+                <td>Heading</td>
+                <td>
+                    <code># H1</code><br>
+                    <code>## H2</code><br>
+                    <code>### H3</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Bold</td>
+                <td><code>**bold text**</code></td>
+            </tr>
+            <tr>
+                <td>Italic</td>
+                <td><code>*italicized text*</code></td>
+            </tr>
+            <tr>
+                <td>Blockquote</td>
+                <td><code>> blockquote</code></td>
+            </tr>
+            <tr>
+                <td>Ordered List</td>
+                <td>
+                    <code>1. First item</code><br>
+                    <code>2. Second item</code><br>
+                    <code>3. Third item</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Unordered List</td>
+                <td>
+                    <code>- First item</code><br>
+                    <code>- Second item</code><br>
+                    <code>- Third item</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Code</td>
+                <td><code>`code`</code></td>
+            </tr>
+            <tr>
+                <td>Horizontal Rule</td>
+                <td><code>---</code></td>
+            </tr>
+            <tr>
+                <td>Link</td>
+                <td><code>[title](https://www.example.com)</code></td>
+            </tr>
+            <tr>
+                <td>Image</td>
+                <td><code>![alt text](image.jpg)</code></td>
+            </tr>
+        </table></center>
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">baz</span><span class="hljs-params">(s)</span> </span>{
-   <span class="hljs-keyword">return</span> foo + <span class="hljs-string">':'</span> + s;
-}
-</code></pre>
-<p>Or inline code like <code>var foo = &#39;bar&#39;;</code>.</p>
-<p>Or an image of bears</p>
-<p><img src="http://placebear.com/200/200" alt="bears"></p>
-<p>The end ...</p>
+        <h2>Extended Syntax</h2>
+        <p>These elements extend the basic syntax and are not supported by every Markdown application.</p>
+        
+        <center><table>
+            <tr>
+                <th>Element</th>
+                <th>Markdown Syntax</th>
+            </tr>
+            <tr>
+                <td>Table</td>
+                <td>
+                    <code>| Syntax | Description |</code><br>
+                    <code>| --- | ----------- |</code><br>
+                    <code>| Header | Title |</code><br>
+                    <code>| Paragraph | Text |</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Fenced Code Block</td>
+                <td>
+                    <code>```</code><br>
+                    <code>{ "key": "value" }</code><br>
+                    <code>```</code>
+                </td>
+            </tr>
+            <tr>
+                <td>Footnote</td>
+                <td><code>Here is a footnote reference[^1]</code></td>
+            </tr>
+            <tr>
+                <td>Strikethrough</td>
+                <td><code>~~strikethrough~~</code></td>
+            </tr>
+            <tr>
+                <td>Task List</td>
+                <td>
+                    <code>- [x] Task 1</code><br>
+                    <code>- [ ] Task 2</code>
+                </td>
+            </tr>
+        </table></center>
+    </div>
 </body>
 </html>

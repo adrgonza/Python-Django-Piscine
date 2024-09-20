@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Ex01: Template engine</title>
+{% endblock title%}
+
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style2.css' %}">
+{% endblock style%}
+
+{% block content %}
+<h1>Template engine</h1>
+<p>Django’s default template engine is a powerful tool for rendering HTML with dynamic data. It allows you to define templates, which are HTML files with placeholders and logic for inserting data. Here’s an overview of the key features and how you can use them with examples.</p>
+<h2>1. Template Syntax</h2>
+<p>
+    Django templates use a special syntax to insert dynamic content and logic. This syntax includes:
+</p>
+<ul>
+    <li>Variables: Inserted with double curly braces <code>{ { } }</code>.</li>
+    <li>Tags: Provide logic like loops and conditionals, enclosed in { % % }.</li>
+</ul>
+<xmp>
+    <h1>Welcome, { { user.name } }!</h1>
+    
+    { % if user.is_authenticated % }
+        <p>You are logged in.</p>
+    { % else % }
+        <p>You are not logged in.</p>
+    { % endif % }
+    
+    <h2>Items:</h2>
+    <ul>
+        { % for item in items % }
+            <li>{ { item.name } } - { { item.price } }</li>
+        { % endfor % }
+    </ul>
+</xmp>
+<h2>
+    2. Template Inheritance
+</h2>
+<p>
+    Django supports template inheritance, allowing you to define a base template that other templates can extend.
+</p>
+<xmp>
+<head>
+    <title>{ % block title % }My Site{ % endblock % }</title>
+</head>
+<body>
+    <header>
+        <h1>My Site</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about/">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        { % block content % }{ % endblock % }
+    </main>
+</body>
+</xmp>
+<h2>
+    3. Template Filters
+</h2>
+<p>Django provides built-in filters for transforming variables within templates.</p>
+<xmp>
+    <p>Today is {{ date | date:"F d, Y" }}</p>
+    <p>{{ description | truncatewords:30 }}</p>
+</xmp>
+<h2>
+    4. Template Tags
+</h2>
+<p>Template tags are used to perform more complex logic within templates.</p>
+<ul>
+    <li>{ % for % }: Loop over items</li>
+    <li>{ % if % }: Conditional statements</li>
+    <li>{ % include % }: Include another template</li>
+</ul>
+{% endblock content%}
