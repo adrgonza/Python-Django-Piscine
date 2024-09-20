@@ -1,4 +1,5 @@
 #!/bin/bash
+#run it woth source
 
 python3 -m venv django_venv
 

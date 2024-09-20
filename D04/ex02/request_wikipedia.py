@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import requests
 import json
 import dewiki
@@ -13,11 +15,12 @@ def main():
         "action": "parse",
         "format": "json",
         "prop": "wikitext",
-        "page": sys.argv[1]
+        "page": sys.argv[1],
+        "redirects": "true"
     }
     
     try:
-        response = requests.get(url, params=params)
+        response = requests.get(url, params=params, timeout=10)
         data = response.json()
         if data.get("error") is not None:
             print("Page not found")

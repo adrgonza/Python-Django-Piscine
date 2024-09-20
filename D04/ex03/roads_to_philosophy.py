@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import sys
 import requests
 from bs4 import BeautifulSoup
@@ -11,12 +13,16 @@ def main():
     page = sys.argv[1].replace(' ', '_')
     
     while True:
-        content = requests.get(url + page).text
-        soup = BeautifulSoup(content, 'html.parser')
-        title = soup.title.string.replace(" - Wikipedia", "")
-        
+        try:
+            content = requests.get(url + page)
+        except requests.HTTPError as e:
+            if (content.status_code == 404):
+                return print("It's a dead end !")
+            return print(e)
+        soup = BeautifulSoup(content.text, 'html.parser')
+        title = soup.find(id='firstHeading').text
         if title in titles:
-            return print("This is an infinite loop!")
+            return print("It leads to an infinite loop !")
         
         titles.append(title)
 
