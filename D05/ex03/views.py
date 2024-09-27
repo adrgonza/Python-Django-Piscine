@@ -1,24 +1,25 @@
 from django.shortcuts import render
 
-def generate_shades(color_name):
-    """Generate a list of 50 shades for a given color."""
+def generate_shades(base_color):
     shades = []
-    for i in range(50):
-        intensity = 100
-        if color_name == 'black':
-            color = f'rgb({intensity}, {intensity}, {intensity})'
-        elif color_name == 'red':
-            color = f'rgb({intensity}, 0, 0)'
-        elif color_name == 'blue':
-            color = f'rgb(0, 0, {intensity})'
-        elif color_name == 'green':
-            color = f'rgb(0, {intensity}, 0)'
-        shades.append(color)
+    for i in range(51):
+        factor = i / 50
+        shade = [
+            int(base_color[j] * factor + (255 - factor * 255)) for j in range(3)
+        ]
+        shades.insert(0 ,f'rgb({shade[0]}, {shade[1]}, {shade[2]})')
     return shades
 
-def ex03_view(request):
-    # Generate color shades for each column
-    colors = ['black', 'red', 'blue', 'green']
-    shades = {color: generate_shades(color) for color in colors}
-    # Pass the shades and range to the template
-    return render(request, 'ex03_index.html', {'shades': shades, 'range': range(50)})
+def colortable(request):
+    colors = {
+        'noir': (0, 0, 0),
+        'rouge': (255, 0, 0),
+        'bleu': (0, 0, 255),
+        'vert': (0, 255, 0),
+    }
+    shades = {color: generate_shades(rgb) for color, rgb in colors.items()}
+    rows = []
+    for i in range(51):
+        rows.append({color: shades[color][i] for color in colors})
+
+    return render(request, 'ex03_index.html', {'rows': rows})

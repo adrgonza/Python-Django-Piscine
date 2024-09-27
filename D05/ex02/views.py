@@ -8,14 +8,12 @@ def form(request):
     form = InputForm()
     history = []
 
-    # Read existing history from logs file
     if os.path.exists(settings.LOGS_FILE_PATH):
         with open(settings.LOGS_FILE_PATH, 'r') as file:
             for line in file:
                 timestamp, user_input = line.strip().split(' ', 1)
                 history.append((timestamp, user_input))
 
-    # Handle form submission
     if request.method == 'POST':
         form = InputForm(request.POST)
         if form.is_valid():
@@ -23,7 +21,6 @@ def form(request):
             timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
             history.append((timestamp, user_input))
 
-            # Write new entry to logs file
             with open(settings.LOGS_FILE_PATH, 'a') as file:
                 file.write(f'{timestamp} {user_input}\n')
 

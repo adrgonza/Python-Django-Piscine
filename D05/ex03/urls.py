@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import ex03_view
+from . import views
 
 urlpatterns = [
-    path('', ex03_view, name='ex03'),
+    path('', views.colortable, name='ex03'),
 ]
