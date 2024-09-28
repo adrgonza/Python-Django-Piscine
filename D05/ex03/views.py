@@ -7,6 +7,7 @@ def generate_shades(base_color):
         shade = [
             int(base_color[j] * factor + (255 - factor * 255)) for j in range(3)
         ]
+        print(shade)
         shades.insert(0 ,f'rgb({shade[0]}, {shade[1]}, {shade[2]})')
     return shades
 
